@@ -52,21 +52,22 @@ def main():
     elif computer_type == "FireType":
         computer_pokemon = pokemon.FireType("Charmander", 100, 20)
 
-    
+    # Print battle information
     player_pokemon.say_hi()
     print("\n\t----- vs -----")
     computer_pokemon.say_hi()
     print("\n")
 
+    # Initialize turn handler 
     turn = turn_handler.Turn(player_pokemon,computer_pokemon)
 
-    while True: # player_pokemon.health > 0 and computer_pokemon.health > 0:
+    while True:
 
         this_move = turn.turn() # decide whose move it is this turn
 
         if this_move is player_pokemon:
 
-            # get player choice of move
+            # Get player choice of move
             player_attack_choice = player_choose_attack.attack_choice()
             if player_attack_choice == 'S':
                 player_pokemon.special_attack(computer_pokemon)
@@ -79,6 +80,7 @@ def main():
                 break
 
         elif this_move is computer_pokemon:
+            # Decide computer's move 
             if random.choice([True,False]):
                 computer_pokemon.attack(player_pokemon)
             else:
@@ -88,7 +90,8 @@ def main():
                     + "\n-------------------------\n")
                 break
         
-        time.sleep(2)
+        # Give some time between moves
+        time.sleep(1)
         
 if __name__ == "__main__":
     main()

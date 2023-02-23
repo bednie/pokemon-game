@@ -17,7 +17,7 @@ def attack_choice() -> str:
             print("\nInvalid selection! Try again.\nPlease enter 'R', or 'S'.")
             continue
 
-
         else:
             break
+        
     return attack_choice
