@@ -2,12 +2,12 @@ import random
 
 class Pokemon():
     
-    def __init__(self, name: str, health: int, hit: int) -> None:
+    def __init__(self, name: str, health: int=100, hit: int=20) -> None:
         self.name = name
         self.health = health
         self.hit_points = hit
 
-
+    # Regular attack common to all pokemon
     def attack(self, Pokemon):
         if Pokemon.health > self.hit_points:
             Pokemon.health = Pokemon.health - self.hit_points
@@ -21,27 +21,35 @@ class Pokemon():
 
     def print_health_status(self,Pokemon):
         if Pokemon.health > 70:
-            print(f"{Pokemon.name}'s HP: " + round(Pokemon.health/10)*"\U0001F7E9"
-            + "\n-------------------------")
+            print(f"{Pokemon.name}'s Health: " + round(Pokemon.health/10)*"\U0001F7E9"
+                + (10-round(Pokemon.health/10))*"\U00002B1C"
+                + f" | {Pokemon.health}"
+                + "\n-------------------------")
         elif Pokemon.health > 50:
-            print(f"{Pokemon.name}'s HP: " + round(Pokemon.health/10)*"\U0001F7E8"
-            + "\n-------------------------")
+            print(f"{Pokemon.name}'s Health: " + round(Pokemon.health/10)*"\U0001F7E8"
+                + (10-round(Pokemon.health/10))*"\U00002B1C"
+                + f" | {Pokemon.health}"
+                + "\n-------------------------")
         elif Pokemon.health > 30:
-            print(f"{Pokemon.name}'s HP: " + round(Pokemon.health/10)*"\U0001F7E7"
-            + "\n-------------------------")
+            print(f"{Pokemon.name}'s Health: " + round(Pokemon.health/10)*"\U0001F7E7"
+                + (10-round(Pokemon.health/10))*"\U00002B1C"
+                + f" | {Pokemon.health}"
+                + "\n-------------------------")
         elif Pokemon.health > 0:
-            print(f"{Pokemon.name}'s HP: " + round(Pokemon.health/10)*"\U0001F7E5"
-            + "\n-------------------------")
+            print(f"{Pokemon.name}'s Health: " + round(Pokemon.health/10)*"\U0001F7E5"
+                + (10-round(Pokemon.health/10))*"\U00002B1C"
+                + f" | {Pokemon.health}"
+                + "\n-------------------------")
         else:
             print(f"{Pokemon.name} fainted!\n-------------------------")
 
-
+    # Display basic information about this pokemon
     def say_hi(self):
         print(f"""\n\tName: {self.name}
-\thealth points: {self.health}
-\thit power: {self.hit_points}""")
+\tHealth Points: {self.health}
+\tHit Power: {self.hit_points}""")
 
-
+    # Abstract method - Child class Pokemon implement special_attack
     def special_attack(self, Pokemon):
        print("Pokemon used its special attack!")
     

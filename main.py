@@ -1,8 +1,10 @@
+import random
+import time
+
+import player_choose_attack
 import pokemon
 import turn_handler
-import time
-import random
-import player_choose_attack
+
 
 def main():
 
@@ -53,8 +55,10 @@ def main():
         computer_pokemon = pokemon.FireType("Charmander", 100, 20)
 
     # Print battle information
+    print("\n\tYou")
     player_pokemon.say_hi()
     print("\n\t----- vs -----")
+    print("\n\tComputer")
     computer_pokemon.say_hi()
     print("\n")
 
@@ -90,7 +94,7 @@ def main():
                     + "\n-------------------------\n")
                 break
         
-        # Give some time between moves
+        # Allow some time between moves
         time.sleep(1)
         
 if __name__ == "__main__":
